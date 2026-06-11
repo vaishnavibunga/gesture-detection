@@ -1,0 +1,169 @@
+# COPY-PASTE PROMPT FOR LOVABLE
+
+**Paste this entire prompt into Lovable.ai to generate your web app:**
+
+---
+
+## GESTURE & SIGN LANGUAGE DETECTION WEB APP
+
+Create a professional, modern web application for gesture and sign language detection that integrates with a YOLOv5 Flask backend API running on `http://localhost:5000`.
+
+### KEY FEATURES
+
+#### 1. IMAGE UPLOAD
+- Drag & drop upload zone with visual feedback
+- File browser button to select images
+- Support formats: JPG, JPEG, PNG, BMP, GIF, WebP
+- Max file size: 10MB
+- Show image preview with dimensions and file size
+- Disable upload during processing
+
+#### 2. DETECTION & INFERENCE
+- When image selected, show "Detect Gestures" button
+- On click, call `POST /predict` API endpoint
+- Display loading spinner with "Analyzing image..." message
+- Show inference time in milliseconds
+- Return detection data: gesture name, confidence, bounding box coordinates
+
+#### 3. RESULTS VISUALIZATION
+- Display annotated image with colored bounding boxes
+- Label each box with: gesture name + confidence % (e.g., "Peace Sign 95%")
+- Show detection count: "Found 5 gestures"
+- Color code by confidence:
+  - Green: 80-100%
+  - Yellow: 50-80%
+  - Red: <50%
+
+#### 4. RESULTS DISPLAY (MULTIPLE VIEWS)
+- **Card View (Default)**: Each detection as a card showing gesture name, confidence %, coordinates
+- **Table View**: Sortable table with columns: Gesture, Confidence, X1, Y1, X2, Y2, Width, Height
+- **Stats View**: Total detections, confidence range, average confidence, distribution chart
+- Toggle between views easily
+
+#### 5. CONFIDENCE THRESHOLD ADJUSTMENT
+- Slider (0-100%) to filter detections by minimum confidence
+- Real-time filtering - results update instantly
+- Show "X gestures match threshold"
+
+#### 6. EXPORT & DOWNLOAD
+- Download annotated image (PNG/JPG)
+- Export results as CSV (gesture, confidence, coordinates)
+- Export results as JSON
+- Copy detection data to clipboard
+- Show success toast notification on export
+
+#### 7. BATCH PROCESSING
+- Option to upload multiple images (up to 10)
+- Show progress bar: "Processing X/Y images"
+- Display results for each image with thumbnails
+- Download all annotated images as ZIP file
+- Export all results as single CSV
+
+#### 8. SETTINGS PANEL
+- API Base URL input (default: http://localhost:5000)
+- Toggle: Return annotated image
+- Toggle: Show coordinates overlay
+- View mode selector: Cards/Table/Stats
+- Theme: Light/Dark mode
+- Save & Reset to Defaults buttons
+
+#### 9. ERROR HANDLING
+- "No image selected" → prompt user
+- "File too large" → show max size
+- "Unsupported format" → list allowed formats
+- "API not responding" → check backend status with retry button
+- "API error" → show error details with retry option
+- "Invalid image" → try another file
+
+#### 10. UI/UX DESIGN
+- Clean, modern design with professional look
+- Color scheme: Blue primary (#0066CC), Green success (#28A745), Red danger (#DC3545)
+- Responsive layout:
+  - Mobile: Stacked layout, full-width previews
+  - Tablet: Two columns
+  - Desktop: Three columns (upload, image, results)
+- Smooth animations and transitions
+- Intuitive navigation and controls
+- Clear visual hierarchy
+
+#### 11. HEADER & NAVIGATION
+- App title: "Gesture Detection"
+- Logo/icon for branding
+- Navigation links: Home, History, Settings, About
+- Display API status (Connected/Disconnected) in top right
+- Dark/Light mode toggle
+
+#### 12. HISTORY & RECENT DETECTIONS
+- Store last 20 detections in browser
+- Show thumbnails with detection count
+- Quick access to re-analyze or download previous results
+- Clear history button
+- Recent detections appear on homepage
+
+#### 13. INFORMATION SECTIONS
+- About: Model type (YOLOv5s), training dataset (Sign Language v3i), accuracy info
+- How to use: Step-by-step guide
+- API Info button: Shows available endpoints and response format
+- FAQ section
+
+#### 14. TECHNICAL REQUIREMENTS
+- API Integration: Call `/health`, `/info`, `/predict`, `/batch-predict` endpoints
+- API Request Format: POST with multipart/form-data (image file)
+- API Response Format: 
+  ```json
+  {
+    "success": true,
+    "detections": [
+      {
+        "class_id": 0,
+        "class_name": "Peace",
+        "confidence": 0.95,
+        "bbox": {"x1": 100, "y1": 50, "x2": 200, "y2": 150, "width": 100, "height": 100}
+      }
+    ],
+    "image": "base64_string_optional",
+    "message": "Found X gestures"
+  }
+  ```
+- Canvas/SVG for drawing bounding boxes on image
+- LocalStorage for user preferences and history
+- Axios or Fetch for API calls
+- Responsive CSS (mobile-first)
+- No backend needed (all backend logic in Flask API)
+
+#### 15. WORKFLOW EXAMPLE
+1. User lands on app → sees upload zone and recent detections
+2. Drags image or clicks browse → image preview appears
+3. Clicks "Detect Gestures" → spinner shows, API called
+4. Results arrive → annotated image with boxes and detection cards
+5. Adjusts confidence slider → results filter in real-time
+6. Downloads annotated image or exports CSV
+7. Uploads another image or views history
+
+#### 16. ACCESSIBILITY & PERFORMANCE
+- WCAG 2.1 AA compliance
+- Alt text for all images
+- Keyboard navigation support
+- Fast load time (<2 seconds)
+- Smooth interactions (no lag)
+- Mobile-friendly (works on all devices)
+- Cross-browser compatible
+
+### DESIGN SPECIFICATIONS
+- Font: Modern sans-serif (Roboto, Inter, Segoe UI)
+- Buttons: Clear, clickable, with hover states
+- Icons: Use professional icons (feather, heroicons, or similar)
+- Spacing: Consistent padding and margins
+- Shadows: Subtle for depth
+- Borders: Minimal, clean design
+
+### IMPORTANT
+- This is a single-page app (no server-side rendering needed)
+- All processing done by Flask backend (http://localhost:5000)
+- Focus on beautiful UI and smooth user experience
+- Make it production-ready and professional
+- Ensure detection results are crystal clear and easy to understand
+
+---
+
+**That's it! Paste this prompt into Lovable and it will generate your complete web app.**
